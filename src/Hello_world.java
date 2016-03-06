@@ -6,6 +6,8 @@ public class Hello_world {
 		
 		double x = 3.0;
 		System.out.println(x);
+	
 	}
+	
 
 }
