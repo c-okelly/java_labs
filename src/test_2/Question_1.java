@@ -1,3 +1,5 @@
+// Author Conor O'Kelly
+
 package test_2;
 
 import java.util.Scanner;
@@ -7,7 +9,6 @@ public class Question_1 {
 	public static void main(String[] args) {
 
 		// Set varialbes
-		String word, hashed_word, guess; 
 		char play_game;
 		
 		// Create Scanner
@@ -22,7 +23,7 @@ public class Question_1 {
 			run_game(Scan);
 			// Get user input on continue game
 			System.out.println("If you would like to continue the game please enter y or Y. Type anything else to exit.");
-			play_game = get_user_string_input(Scan);
+			play_game = get_user_char_input(Scan);
 			
 		}	
 		
@@ -45,14 +46,15 @@ public class Question_1 {
 	
 		
 		// Generate word from predefined list and generate hashed word using regex replaceAl
-		word = "jamaes"; //generate_word();
+		word = generate_word();
 		hashed_word = word.replaceAll(regex_remove, "*");
 		
+		// Run while hashed_word and word are not equal
 		while (!word.equals(hashed_word)) {
 			// Print statement start of the gamge
 			System.out.printf("The word is [%s]. Please guess a letter. Guess no %d \n", hashed_word, count);
 			// Take user input convert to lower case and then to string
-			guess = Character.toLowerCase(get_user_string_input(Scan));
+			guess = Character.toLowerCase(get_user_char_input(Scan));
 			guess_str = Character.toString(guess);
 			
 //			System.out.println(guess_str);
@@ -76,8 +78,7 @@ public class Question_1 {
 	public static String generate_word() {
 		
 		// Create variables
-		String word_to_find;
-		int length, index_choice;
+		int index_choice;
 		// Create string array
 		String[] word_choice = {"hello", "dog", "cat", "hat", "mouse", "jump", "grass", "play"}; 
 		// Generate random number between 0 and length of list
@@ -90,7 +91,7 @@ public class Question_1 {
 	}
 	
 	
-	public static char get_user_string_input(Scanner Scan) {
+	public static char get_user_char_input(Scanner Scan) {
 		
 		// Get user input
 		char user_guess;
