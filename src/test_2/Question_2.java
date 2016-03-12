@@ -25,6 +25,7 @@ public class Question_2 {
 		// Craete array to hold all paths
 		String[] path_collection = new String[no_balls];
 		
+<<<<<<< HEAD
 		// Create array to hold results
 		int[] results = new int[no_slots];
 		
@@ -46,6 +47,22 @@ public class Question_2 {
 		
 		// Output results
 		System.out.println("\nPaths");
+=======
+		// Generate the required number of paths
+		create_list_paths(no_balls,random_path_length,path_collection);
+		
+		
+		System.out.println(Arrays.toString(path_collection));
+		
+		// Create array to hold results
+		int[] results = new int[no_slots];
+		
+		// Generate the results from path arrays and update the results array
+		create_int_array_results(no_balls, no_slots, path_collection,results);
+		
+		// Output results
+		System.out.println("Paths");
+>>>>>>> c951732e0acd0375560c6513e01ee98674d22588
 		for (int i=0; i< path_collection.length; i++) {
 			System.out.println(path_collection[i]);
 		}
@@ -57,6 +74,7 @@ public class Question_2 {
 		if (Scan != null) Scan.close();
 		
 	}
+<<<<<<< HEAD
 
 	public static String choose_path(int size_path) {
 		// Create variables
@@ -147,4 +165,70 @@ public class Question_2 {
 ////		System.out.print(Arrays.toString(result));
 //
 //	} 
+=======
+	
+
+	public static String choose_path(int size_path) {
+		// Create variables
+		String path = "";
+		int multipier, choice;
+		
+		// Gerenate random selection of r and l depending on required length of string
+		for (int i=1; i<= size_path; i++) {
+			multipier = 2;
+			choice = (int)(Math.random() * multipier);
+//			System.out.print(choice);
+			
+			if (choice == 0) {
+				path += "r";
+			}
+			else if (choice == 1){
+				path += "l";
+			}
+		}
+		
+		return path;
+	}
+	
+	
+	public static void create_list_paths(int no_balls, int random_path_length, String[] path_collection) {
+		for (int i=0; i< no_balls; i++) {
+			path_collection[i] = choose_path(random_path_length);
+		}
+		
+		
+	}
+	
+	public static void create_int_array_results(int no_balls, int no_slots, String[] paths,int[] results) {
+		int[] result = new int[no_slots];
+		int ball_position, letter_count;
+		String current_item;
+		char current_letter;
+		
+//		System.out.println(Arrays.toString(result));
+		
+		// Iterate first string in path_collection
+		for (int i=0; i < (no_balls); i++) {
+			ball_position = 0;
+//			System.out.println(paths[i]);
+			
+			// Iterate through items in string
+			// Finish at number of slots -1 
+			for (int k=0; k < (no_slots - 1); k++) {
+				current_item = paths[i];
+				current_letter = current_item.charAt(k);
+				// Check if letter is r or l. If r increase index by 1.
+				if (current_letter == 'r') {
+					ball_position += 1;
+				}
+			}
+			// Increase slot in index depending where ball ended up
+			result[ball_position] += 1;
+//			System.out.println(ball_position);
+		}
+		
+//		System.out.print(Arrays.toString(result));
+
+	} 
+>>>>>>> c951732e0acd0375560c6513e01ee98674d22588
 }
